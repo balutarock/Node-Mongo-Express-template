@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const userRoutes = require("./routes/userRoute");
 
@@ -17,7 +18,7 @@ app.use("/users", async (req, res) => {
 app.use(userRoutes);
 
 const PORT = process.env.PORT || 5000;
-const MONGOOSE_URL = "mongodb://localhost:27017/jotform";
+const MONGOOSE_URL = process.env.MONGOOSE_URL;
 
 mongoose
   .connect(MONGOOSE_URL, { useNewUrlParser: true })
